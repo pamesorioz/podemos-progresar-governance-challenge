@@ -45,25 +45,14 @@ Revisión: La revisión de un Pull Request incluirá una validación de gobierno
 Diagrama de Estructura Organizacional
 A continuación se muestra un diagrama simplificado de las relaciones. La línea punteada representa una relación de guía y soporte, no de reporte directo.
 
-      +-------------+
-      |     CTO     |
-      +-------------+
-            |
-+---------------------------+
-| Equipo Central de Datos   |
-|                           |
-|  +---------------------+  |    +-----------------------------+
-|  | Data Governance     |------>| Data Stewards (en Tribus)   |
-|  | Office (DGO)        |<------| (Relación de Guía/Soporte)  |
-|  +---------------------+  |    +-----------------------------+
-|                           |
-|  +---------------------+  |
-|  | Equipo de Data Eng. |  |
-|  +---------------------+  |
-|                           |
-+---------------------------+
+- **CTO**
+    - **Equipo Central de Datos**
+        - **Equipo de Data Engineering**
+        - **Data Governance Office (DGO)**
+            - *Relación de guía y soporte con:*
+                - **Data Stewards** (ubicados dentro de cada Tribu y Unidad de Negocio)
 
-4. Matriz de Decisiones (RACI)
+# 4. Matriz de Decisiones (RACI)
 Para ilustrar cómo funciona este modelo en la práctica, usemos un caso real:
 
 Decisión Clave: "¿Quién decide si agregamos un nuevo campo a la tabla fact_salesmetrics?"
