@@ -73,13 +73,13 @@ Crearemos un "Blueprint de Gobierno de Dominio": un checklist y un conjunto de p
 
 Iniciaremos el gobierno del siguiente dominio más crítico: Operaciones de Venta (datos de fact_salesmetrics, cumplimiento_100, etc.), aplicando el mismo blueprint.
 
-¿Qué automatizamos vs. qué requiere intervención manual?
+* ¿Qué automatizamos vs. qué requiere intervención manual?
 
 Automatizado: La ejecución de las pruebas de calidad, la generación de los reportes de calidad, la extracción de metadatos técnicos con Glue Crawlers.
 
 Manual: La definición de reglas de negocio (requiere un experto), la investigación de la causa raíz de un error de calidad, y la documentación del contexto de negocio en el catálogo.
 
-¿Cómo medimos el éxito? (KPIs de Gobierno de Datos)
+* ¿Cómo medimos el éxito? (KPIs de Gobierno de Datos)
 
 Cobertura del Catálogo: % de Activos de Datos Críticos documentados (Objetivo: 50% al final de esta fase).
 
