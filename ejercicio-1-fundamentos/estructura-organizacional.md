@@ -1,4 +1,4 @@
-1. Modelo Organizacional: Híbrido / Federado
+# 1. Modelo Organizacional: Híbrido / Federado
 
 Adoptaremos un modelo Híbrido. Esto significa que tendremos:
 
@@ -21,7 +21,7 @@ Dadas las restricciones presupuestarias y la necesidad de ser ágiles, el DGO in
 
 1x Data Quality Engineer: Un rol técnico y práctico. Será responsable de implementar el framework de calidad de datos (ej. Great Expectations), construir los dashboards de monitoreo y ayudar a los ingenieros a instrumentar sus pipelines.
 
-2. Roles y Responsabilidades Clave
+# 2. Roles y Responsabilidades Clave
 
 | Rol                      | ¿Quién es?                                                                                                                              | Responsabilidades Clave                                                                                                                                                                                               |
 | :----------------------- | :-------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -31,7 +31,7 @@ Dadas las restricciones presupuestarias y la necesidad de ser ágiles, el DGO in
 | **Data Engineer** | Miembro del equipo técnico de datos.                                                                                                    | - **Implementa** los controles de calidad y linaje en los pipelines.<br>- **Asegura** que los nuevos "productos de datos" cumplan con los estándares de gobierno.                                                          |
 
 
-3. Estructura y Flujo de Interacción
+# 3. Estructura y Flujo de Interacción
 El DGO no es un "policía de datos", sino un "habilitador". Nuestra interacción con los ingenieros de datos se integrará en su flujo de trabajo existente (CI/CD, Pull Requests).
 
 ¿Cómo interactuamos?
