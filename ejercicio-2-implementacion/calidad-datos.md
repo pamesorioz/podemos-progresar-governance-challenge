@@ -57,3 +57,16 @@ A la tabla de dimensión o de reglas de negocio donde se define el cálculo, se 
 Cuando la regla cambia, la fila vieja se "cierra" (se le pone una fecha_fin_validez = now() - 1 day) y se inserta una fila nueva con la nueva regla, una nueva versión y la nueva fecha_inicio_validez (now()).
 
 El ETL se modifica para que al hacer el join, una la transacción con la versión de la regla que estaba vigente en la fecha_reporte de la transacción.
+
+-- DDL para modificar la tabla de reglas
+ALTER TABLE dim_reglas_negocio ADD COLUMN version INT;
+ALTER TABLE dim_reglas_negocio ADD COLUMN fecha_inicio_validez DATE;
+ALTER TABLE dim_reglas_negocio ADD COLUMN fecha_fin_validez DATE;
+
+-- El join en el ETL ahora se ve así:
+...
+FROM fact_salesmetrics f
+JOIN dim_reglas_negocio r ON f.regla_id = r.regla_id
+AND f.fecha_reporte BETWEEN r.fecha_inicio_validez AND r.fecha_fin_validez
+...
+
