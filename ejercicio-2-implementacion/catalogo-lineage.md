@@ -50,6 +50,6 @@ La lección fue: la documentación de negocio debe vivir junto a la documentaci�
 
 "El mayor desafío es siempre capturar las transformaciones que ocurren dentro del código (la lógica de negocio en un script de Python o Spark). Las herramientas automáticas son buenas para ver Tabla A -> Job -> Tabla B, pero si no instrumentas el código, es imposible saber que la columna_x en la Tabla B se calcula a partir de la columna_y y columna_z de la Tabla A. Nuestra solución de log_lineage manual es un primer paso para capturar estas notas."
 
-¿Cómo lograr que la gente USE el catálogo?
+* ¿Cómo lograr que la gente USE el catálogo?
 
 "La clave es la integración en el flujo de trabajo. En Metco, logramos la adopción al hacer que el catálogo fuera el punto de partida para cualquier nuevo análisis. Si un dato no estaba en el catálogo, no se consideraba 'oficial'. Además, integramos el catálogo con Slack, de modo que cuando alguien preguntaba por un dato, podíamos responder con un enlace directo a su ficha en el catálogo, educando a la gente sobre su existencia y utilidad de forma orgánica."
