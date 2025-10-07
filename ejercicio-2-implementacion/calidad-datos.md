@@ -63,6 +63,8 @@ ALTER TABLE dim_reglas_negocio ADD COLUMN version INT;
 ALTER TABLE dim_reglas_negocio ADD COLUMN fecha_inicio_validez DATE;
 ALTER TABLE dim_reglas_negocio ADD COLUMN fecha_fin_validez DATE;
 ```
+
+```
 -- El join en el ETL ahora se ve así:
 
 
