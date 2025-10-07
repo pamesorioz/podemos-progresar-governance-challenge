@@ -17,3 +17,39 @@ Mi recomendación es una estrategia pragmática y evolutiva:
 * Fase 2 (Año 2): Migrar a OpenMetadata.
 
 ¿Por qué? Una vez que la cultura de gobierno de datos esté más madura y la necesidad de colaboración, linaje avanzado y un portal de negocio sea un dolor real y cuantificable, estaremos en una posición mucho mejor para justificar y ejecutar la implementación de una herramienta dedicada como OpenMetadata. Para entonces, ya tendremos el contenido (definiciones, dueños) listo para migrar.
+
+# 2. Arquitectura de Catalogación y Linaje
+
+## Arquitectura de Catalogación
+
+El flujo será simple y se apoyará en nuestras herramientas existentes:
+
+* Descubrimiento Automático: Un AWS Glue Crawler se ejecutará diariamente para escanear nuestros buckets de S3 (zona curated) y los schemas de Redshift. Esto mantendrá los metadatos técnicos (nombres de columnas, tipos de datos, particiones) siempre actualizados en el Glue Data Catalog.
+
+* Enriquecimiento Manual: Los Data Stewards serán responsables de enriquecer esta información técnica con contexto de negocio. Esto se hará a través de scripts o directamente en la Wiki, añadiendo descripciones funcionales, ejemplos, etiquetas de clasificación de datos (PII, Confidencial) y el propósito del dataset.
+
+## Arquitectura de Linaje
+
+El linaje es complejo. Empezaremos con una solución simple y efectiva antes de depender de una herramienta automática.
+
+* Creación de una Tabla de Linaje: Crearemos una tabla simple en Redshift: governance.lineage_log (source_entity VARCHAR, target_entity VARCHAR, job_run_id VARCHAR, transformation_notes VARCHAR, timestamp TIMESTAMP).
+
+* Instrumentación de Jobs de Glue: Crearemos una función compartida en Python que los ingenieros de datos importarán en sus jobs. Esta función (log_lineage(...)) será llamada al inicio y al final de la ejecución para escribir en la tabla governance.lineage_log.
+
+* Visualización: Con esta tabla, podemos construir una vista o un dashboard simple en Power BI/QuickSight para visualizar las dependencias entre tablas, respondiendo a preguntas como "¿Qué procesos alimentan esta tabla?" y "¿Qué tablas se verán afectadas si cambio esta fuente?".
+
+# 3. Experiencia Pasada
+
+¿Herramientas usadas y por qué funcionaron (o no)?
+
+* "En Metco, iniciamos con un enfoque similar: un inventario manual en una Wiki. Funcionó bien para empezar y crear un lenguaje común, pero no escaló. La falta de conexión automática con los metadatos técnicos hacía que la documentación se desactualizara rápidamente. 
+
+La lección fue: la documentación de negocio debe vivir junto a la documentación técnica y automatizada para ser sostenible, lo que valida la estrategia de dos fases propuesta aquí."
+
+* ¿Mayor desafío técnico al implementar linaje?
+
+"El mayor desafío es siempre capturar las transformaciones que ocurren dentro del código (la lógica de negocio en un script de Python o Spark). Las herramientas automáticas son buenas para ver Tabla A -> Job -> Tabla B, pero si no instrumentas el código, es imposible saber que la columna_x en la Tabla B se calcula a partir de la columna_y y columna_z de la Tabla A. Nuestra solución de log_lineage manual es un primer paso para capturar estas notas."
+
+¿Cómo lograr que la gente USE el catálogo?
+
+"La clave es la integración en el flujo de trabajo. En Metco, logramos la adopción al hacer que el catálogo fuera el punto de partida para cualquier nuevo análisis. Si un dato no estaba en el catálogo, no se consideraba 'oficial'. Además, integramos el catálogo con Slack, de modo que cuando alguien preguntaba por un dato, podíamos responder con un enlace directo a su ficha en el catálogo, educando a la gente sobre su existencia y utilidad de forma orgánica."
