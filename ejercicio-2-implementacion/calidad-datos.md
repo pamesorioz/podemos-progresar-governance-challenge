@@ -34,11 +34,11 @@ Great Expectations genera un sitio HTML estático llamado "Data Docs" con los re
 
 * Caso A: Falla de internet en Tribu_0015, reporte semanal obligatorio.
 
-** Decisión: [✅] Publicas con nota explicativa y datos parciales.
+Decisión: [✅] Publicas con nota explicativa y datos parciales.
 
-** Justificación: La puntualidad de un reporte regulatorio o para el CEO a menudo supera la necesidad de completitud perfecta. Bloquear la publicación por un 3% de los datos faltantes (1 de 29 tribus) causa más daño que bien. La transparencia es la clave para construir confianza.
+Justificación: La puntualidad de un reporte regulatorio o para el CEO a menudo supera la necesidad de completitud perfecta. Bloquear la publicación por un 3% de los datos faltantes (1 de 29 tribus) causa más daño que bien. La transparencia es la clave para construir confianza.
 
-** Proceso Establecido:
+Proceso Establecido:
 
 La regla de "Completitud" (verificar 29 tribus) fallará, pero estará configurada con un nivel de severidad de "Advertencia" (Warning), no de "Fallo" (Failure).
 
@@ -48,7 +48,7 @@ El dashboard de Power BI tendrá una nota automática en la parte superior: "Avi
 
 * Caso B: Cambio de regla de negocio histórica para el cálculo de par7.
 
-** Manejo Técnico (¿Recalcular?): NUNCA se deben sobreescribir los datos históricos con la nueva regla. Hacerlo sería reescribir la historia y destruir la capacidad de hacer análisis comparativos válidos (ej. "año contra año"). La solución correcta es implementar Versionado de Dimensiones Lentas (SCD Tipo 2).
+Manejo Técnico (¿Recalcular?): NUNCA se deben sobreescribir los datos históricos con la nueva regla. Hacerlo sería reescribir la historia y destruir la capacidad de hacer análisis comparativos válidos (ej. "año contra año"). La solución correcta es implementar Versionado de Dimensiones Lentas (SCD Tipo 2).
 
 * Implementación:
 
