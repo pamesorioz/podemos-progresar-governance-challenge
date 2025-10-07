@@ -50,7 +50,7 @@ El dashboard de Power BI tendrá una nota automática en la parte superior: "Avi
 
 Manejo Técnico (¿Recalcular?): NUNCA se deben sobreescribir los datos históricos con la nueva regla. Hacerlo sería reescribir la historia y destruir la capacidad de hacer análisis comparativos válidos (ej. "año contra año"). La solución correcta es implementar Versionado de Dimensiones Lentas (SCD Tipo 2).
 
-* Implementación:
+## Implementación:
 
 A la tabla de dimensión o de reglas de negocio donde se define el cálculo, se le añaden tres columnas: version, fecha_inicio_validez, fecha_fin_validez.
 
@@ -58,15 +58,22 @@ Cuando la regla cambia, la fila vieja se "cierra" (se le pone una fecha_fin_vali
 
 El ETL se modifica para que al hacer el join, una la transacción con la versión de la regla que estaba vigente en la fecha_reporte de la transacción.
 
--- DDL para modificar la tabla de reglas
+``
+DDL para modificar la tabla de reglas
 ALTER TABLE dim_reglas_negocio ADD COLUMN version INT;
 ALTER TABLE dim_reglas_negocio ADD COLUMN fecha_inicio_validez DATE;
 ALTER TABLE dim_reglas_negocio ADD COLUMN fecha_fin_validez DATE;
-
+```
 -- El join en el ETL ahora se ve así:
-...
+
+``
 FROM fact_salesmetrics f
 JOIN dim_reglas_negocio r ON f.regla_id = r.regla_id
 AND f.fecha_reporte BETWEEN r.fecha_inicio_validez AND r.fecha_fin_validez
-...
+```
 
+# Manejo de Governance:
+
+¿Quién decide? El Data Owner del dominio de Riesgo aprueba el cambio.
+
+¿Cómo se comunica? El Data Steward es responsable de documentar el cambio en la ficha del dataset en el Catálogo de Datos, incluyendo la fecha de efectividad y la razón del cambio. Se envía un comunicado a los usuarios principales.
