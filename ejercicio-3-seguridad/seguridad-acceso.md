@@ -1,4 +1,13 @@
 # 1. Clasificación de Datos
+Este documento detalla la estrategia para proteger los activos de datos de Podemos Progresar. Nuestro enfoque se basa en tres principios clave:
+
+* Principio de Menor Privilegio (Least Privilege): Los usuarios solo tendrán acceso a los datos estrictamente necesarios para realizar su trabajo. El acceso por defecto es "denegado".
+
+* Defensa en Profundidad (Defense in Depth): Implementaremos múltiples capas de seguridad (red, infraestructura, base de datos, BI) para que la falla de un solo control no comprometa todo el sistema.
+
+* Privacidad por Diseño (Privacy by Design): La protección de datos personales (PII) no será una ocurrencia tardía, sino un requisito fundamental integrado en el diseño de nuestras tablas y vistas.
+
+
 El primer paso para proteger nuestros datos es entender su nivel de sensibilidad. Proponemos un framework de clasificación de 4 niveles:
 | Nivel            | Descripción                                                                                                                                          | Ejemplos en Podemos Progresar                                                        |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
