@@ -1,0 +1,59 @@
+# #############################################################################
+# ## Configuración Conceptual de Alertas de Seguridad con CloudWatch
+# ## Este es un ejemplo de un template de SAM/CloudFormation
+# #############################################################################
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Stack para alertas de seguridad en Redshift.
+
+Resources:
+  # 1. Tópico de SNS para notificar alertas críticas de seguridad
+  SecurityAlertsSNSTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      DisplayName: RedshiftSecurityAlertsTopic
+      TopicName: redshift-security-alerts-topic
+
+  # 2. Métrica de CloudWatch que busca comandos UNLOAD en los logs de auditoría de Redshift
+  UnloadCommandMetricFilter:
+    Type: AWS::Logs::MetricFilter
+    Properties:
+      LogGroupName: /aws/redshift/cluster-name/audit-logs # Nombre del grupo de logs de auditoría
+      FilterPattern: '{ ($.record_name = "user_activity_log") && ($.query_text = "unload*") }'
+      MetricTransformations:
+        - MetricValue: "1"
+          MetricNamespace: "Redshift/Security"
+          MetricName: "UnloadCommandCount"
+
+  # 3. Alarma que se dispara si la métrica anterior detecta un comando UNLOAD
+  UnloadCommandAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: RedshiftUnloadCommandDetected
+      AlarmDescription: "Alerta! Se ha detectado un comando UNLOAD en Redshift."
+      Namespace: "Redshift/Security"
+      MetricName: "UnloadCommandCount"
+      Statistic: Sum
+      Period: 300 # 5 minutos
+      EvaluationPeriods: 1
+      Threshold: 0
+      ComparisonOperator: GreaterThanThreshold
+      AlarmActions:
+        - !Ref SecurityAlertsSNSTopic
+
+  # 4. Función Lambda que procesa la alerta y la envía a Slack
+  AlertToSlackFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Environment:
+        Variables:
+          SLACK_WEBHOOK_URL: 'your-slack-webhook-url'
+      Events:
+        SNSEvent:
+          Type: SNS
+          Properties:
+            Topic: !Ref SecurityAlertsSNSTopic
