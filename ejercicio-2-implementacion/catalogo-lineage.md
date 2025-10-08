@@ -1,4 +1,6 @@
 # 1. Selección de Herramientas de Catálogo
+Este documento detalla la estrategia técnica, la selección de herramientas y la arquitectura para implementar los dos pilares fundamentales del gobierno: el Catálogo de Datos (saber qué tenemos) y el Linaje (saber de dónde viene).
+
 Considerando nuestras restricciones (presupuesto <$50K/año, equipo pequeño, ecosistema AWS), he realizado una comparativa de tres opciones viables.
 
 | Herramienta               | Costo Aprox/Año                    | Pros                                                                                                                                                                                                                                                                                                                                                                                 | Cons                                                                                                                                                                                                                                                                                                                   | Esfuerzo de Implementación                                                                                                                   |

@@ -1,4 +1,5 @@
 # 1. Flujo de Trabajo (Workflow)
+Este documento define un proceso formal y auditable para gestionar el ciclo de vida del acceso a los datos. El objetivo es que el proceso sea claro, eficiente y seguro.
 El proceso sigue un flujo de aprobación basado en la clasificación del dato solicitado.
 
 1. Solicitud

@@ -1,4 +1,7 @@
 # Roadmap de Gobierno de Datos (Primeros 6 Meses)
+
+Este roadmap describe el plan de implementación de la función de Gobierno de Datos, priorizando la entrega de valor temprano y la construcción de una base sólida para el futuro. El plan está diseñado para ser pragmático, adaptarse a nuestra cultura ágil y operar dentro de las restricciones presupuestarias y de equipo.
+
 Este roadmap describe el plan de implementación de la función de Gobierno de Datos, priorizando la entrega de valor temprano y la construcción de una base sólida para el futuro. El plan está diseñado para ser pragmático, adaptarse a nuestra cultura ágil y operar dentro de las restricciones presupuestarias y de equipo.
 
 Cronograma Visual:

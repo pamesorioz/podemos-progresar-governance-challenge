@@ -1,4 +1,5 @@
 # Dataset: fact_salesmetrics
+Este documento es un ejemplo concreto de cómo se verá la ficha técnica de nuestra tabla más crítica en el catálogo de datos.
 
 ## Metadata Técnica
 - **Data Owner (Dueño que aprueba cambios):** Director de Operaciones de Crédito

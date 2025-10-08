@@ -1,5 +1,9 @@
 # 1. Modelo Organizacional: Híbrido / Federado
 
+Este documento describe la propuesta de modelo organizacional, los roles, las responsabilidades y los procesos de decisión para la función de Gobierno de Datos en Podemos Progresar.
+
+La filosofía de esta estructura es: centralizar los estándares y las herramientas, pero descentralizar la ejecución y el conocimiento del negocio.
+
 Adoptaremos un modelo Híbrido. Esto significa que tendremos:
 
 Un Equipo Central de Gobierno de Datos (DGO - Data Governance Office) pequeño y técnico, que establece las reglas del juego, provee las herramientas (catálogo, calidad de datos) y audita el cumplimiento.

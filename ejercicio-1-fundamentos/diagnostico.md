@@ -10,7 +10,8 @@ Este documento detalla el plan de acción para las primeras 4 semanas. Su propó
 
 El primer mes se centrará en una fase de descubrimiento y medición. El objetivo es obtener una comprensión profunda de la situación actual para basar el roadmap estratégico en datos y no en suposiciones.
 
-1. Diagnóstico Técnico y Organizacional
+## 1. Diagnóstico Técnico y Organizacional
+
 * A. Evaluación de la Infraestructura Técnica Actual
 
 Se realizará un análisis técnico para cuantificar el estado de los sistemas de datos principales.
@@ -21,7 +22,7 @@ Análisis sobre Aurora RDS (Base de Datos Principal):
 
 * Métricas a obtener: Volumen de datos (TB y tasa de crecimiento), rendimiento (latencia de consultas), y dependencias con otros sistemas.
 
-*Análisis sobre los Pipelines ETL:
+* Análisis sobre los Pipelines ETL:
 
 Revisión a realizar: Se examinará el código de los pipelines más críticos y se analizarán sus logs de ejecución de las últimas cuatro semanas.
 

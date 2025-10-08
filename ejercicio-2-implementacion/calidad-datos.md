@@ -1,4 +1,6 @@
 # 1. Framework de Calidad para Microfinanzas
+Este documento define el framework de calidad, la implementación técnica y los procesos de gobernanza para manejar las excepciones del mundo real.
+
 Implementaremos un framework basado en 5 dimensiones de calidad, con reglas específicas para fact_salesmetrics:
 | Dimensión        | Pregunta de Negocio                      | Regla Específica para `fact_salesmetrics`                                                                                                                                                                     |
 | ---------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
